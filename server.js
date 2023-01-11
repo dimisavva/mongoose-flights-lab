@@ -5,7 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import logger from 'morgan'
 
-import 'dotenv/config.js'
+import './config/database.js'
 
 
 // import routers
