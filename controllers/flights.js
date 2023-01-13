@@ -102,6 +102,13 @@ function createTicket(req, res) {
   })
 }
 
+function deleteTicket(req, res) {
+  console.log(req.params)
+  const currentFlight = Flight.findById(req.params.id)
+  // const currentTicket = Ticket.findById(req.params.ticketId)
+  const ticketDoc = currentFlight.tickets.id(req.params.ticketId)
+  console.log(ticketDoc)
+
 export {
   index,
   newFlight as new,
@@ -111,4 +118,5 @@ export {
   edit,
   update,
   createTicket,
+  deleteTicket
 }

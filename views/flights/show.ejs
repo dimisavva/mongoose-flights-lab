@@ -38,6 +38,9 @@
           <th>Date:</th>
           <th>Seat:</th>
           <th>Price:</th>
+          <th></th>
+          <th>flight._id</th>
+          <th>ticket._id</th>
         </tr>
       </thead>
       <tbody>
@@ -46,6 +49,16 @@
             <td><%= ticket.createdAt.toLocaleDateString() %></td>
             <td><%= ticket.seat %></td>
             <td><%= ticket.price %></td>
+            <td>
+              <form 
+              action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>/?_method=DELETE"
+              class="delete-form"
+              method="POST">
+              <button>X</button>
+            </form>
+            </td>
+            <td><%= flight._id %></td>
+            <td><%= ticket._id %></td>
           </tr>
         <% }) %>
       </tbody>
