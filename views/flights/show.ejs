@@ -19,6 +19,12 @@
     <a href="/">
       <button>Go Back</button>
     </a>  
+    <div>Meals Offered:</div>
+    <ul>
+      <% flight.meals.forEach(mealOption => { %>
+        <li>mealOption.name</li>
+      <% }) %>
+    </ul>
   </section>
   <h2>Tickets:</h2>
   <form id="add-review-form"
