@@ -74,12 +74,31 @@ function update(req, res) {
     if (req.body[key] === '') delete req.body[key]
   }
   Flight.findByIdAndUpdate(req.params.id, req.body, {new: true})
-  .then(movie => {
+  .then(flight => {
     res.redirect(`/flights/${flight._id}`)
   })
   .catch(err => {
     console.log(err)
     res.redirect('/flights/edit')
+  })
+}
+
+function createTicket(req, res) {
+  Flight.findById(req.params.id)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
   })
 }
 
@@ -90,5 +109,6 @@ export {
   deleteFlight as delete,
   show,
   edit,
-  update
+  update,
+  createTicket,
 }
