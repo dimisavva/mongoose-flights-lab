@@ -1,0 +1,35 @@
+<%- include('../partials/html-head.ejs') %> 
+<link rel="stylesheet" href="/stylesheets/flights/new.css">
+<%- include('../partials/nav.ejs') %> 
+
+<main>
+  <h1><%= title %> </h1>
+  <form id='new-form' action="/flights" method="POST">
+    <label for="airline-select">Airline:</label>
+    <select name="airline" id="airline-select">
+      <option value="<%= flight.airline %>"><%= flight.airline %></option>
+      <option value="Delta">Delta</option>
+      <option value="Southwest">Southwest</option>
+      <option value="United">United</option>
+    </select>
+    <label for="airport-select">Airport:</label>
+    <select name="airport" id="airport-select">
+      <option value="<%= flight.airport %>"><%= flight.airport %></option>
+      <option value="DEN">DEN</option>
+      <option value="DFW">DFW</option>
+      <option value="AUS">AUS</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+      <option value="SLC">SLC</option>
+      <option value="JFK">JFK</option>
+    </select>
+    <label for="flight-number-input">Flight Number:</label>
+    <input type="number" name="flightNo" id="flight-number-input" value="<%= flight.flightNo %>">
+    <label for="departs-input">Departs:</label>
+    <input type="datetime-local" name="departs" id="departs-input" value="<%= flight.departs %>">
+    <%= flight.departs %>
+    <button type="submit">Add Flight</button>
+  </form>
+</main>
+
+<%- include('../partials/footer.ejs') %> 
